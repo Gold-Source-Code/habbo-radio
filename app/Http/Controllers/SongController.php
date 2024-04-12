@@ -14,9 +14,10 @@ class SongController extends Controller
     public function index()
     {
         //code om liedjes op te hsalen 
-        $name = DB::table('songs')->select("name")->get();
-        $artist = DB::table('songs')->select("artist")->get();
-        return view('melon',["name"=> $name], ["artist"=> $artist])->with('songs', $name, $artist);
+        // $songinfo = DB::table('songs')->select("name", "artist")->get();
+
+        $allSongs = Song::all();
+        return view('melon', ['songs' => $allSongs]);
     }
 
     /**
