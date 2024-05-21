@@ -22,3 +22,13 @@ body {
     font-size: 20px;
     font-family: Roboto;
 }
+.PlaylistText {
+    color: rgb(250, 250, 250);
+    font-size: 30px;
+    font-family: Roboto;
+}
+.SonglistText {
+    color: rgb(250, 250, 250);
+    font-size: 20px;
+    font-family: Roboto;
+}
