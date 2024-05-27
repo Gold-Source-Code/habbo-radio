@@ -7,16 +7,12 @@ use App\Models\Song;
 use App\Models\Playlist;
 use Illuminate\Http\Request;
 
-class SongController extends Controller
+class PlaylistDetailController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Playlist $playlist)
     {
         $allSongs = Song::all();
-        $allPlaylists = Playlist::all();
-        return view('melon', ['songs' => $allSongs, 'playlists' => $allPlaylists]);
+        return view('playlistdetail', ['songs' => $allSongs, 'playlist' => $playlist]);
     }
 
     /**
@@ -24,7 +20,7 @@ class SongController extends Controller
      */
     public function create()
     {
-        // 
+        //
     }
 
     /**
@@ -38,7 +34,7 @@ class SongController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Song $song)
+    public function show(Playlist $playlist)
     {
         //
     }
@@ -46,7 +42,7 @@ class SongController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Song $song)
+    public function edit(Playlist $playlist)
     {
         //
     }
@@ -54,7 +50,7 @@ class SongController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Song $song)
+    public function update(Request $request, Playlist $playlist)
     {
         //
     }
@@ -62,7 +58,7 @@ class SongController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Song $song)
+    public function destroy(Playlist $playlist)
     {
         //
     }

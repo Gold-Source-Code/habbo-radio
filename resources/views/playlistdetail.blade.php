@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Habbo Radio</title>
+        <link rel="stylesheet" type="text/css" href="{{asset('css/playlistdetail.css')}}">
+    </head>
+    <body>
+        <img class="logo" src="{{asset('icons/habbo.png')}}" alt="logo">
+
+        <div class="PlaylistName">{{$playlist->name}}</div>
+        @foreach($playlist -> songs as $song)
+            <div class="SongText">- {{$song->name}}</div>
+        @endforeach 
+
+        <a href="/melon">
+        <button>Songs</button>
+        </a>
+
+        <a href="/playlist">
+        <button>Playlists</button>
+        </a>
+
+        <div class="watermark">
+            <img src="{{asset('icons/3.png')}}" alt="watermark">
+        </div>
+    </body>
+</html>

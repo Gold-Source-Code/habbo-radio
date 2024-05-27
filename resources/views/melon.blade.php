@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Habbo Radio</title>
-        <link rel="stylesheet" type="text/css" href="{{asset('css/stylesheet.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/melon.css')}}">
     </head>
     <body>
         <img class="logo" src="{{asset('icons/habbo.png')}}" alt="logo">
@@ -22,12 +22,9 @@
                 <div class="ArtistText">{{$song->artist}} - {{$dur}} - {{$song->genre->type}}</div>
             @endforeach
 
-            @foreach($playlists as $playlist)
-            <div class="PlaylistText">{{$playlist->name}}</div>
-                @foreach($playlist -> songs as $song2)
-                    <div class="SonglistText">{{$song2->name}}</div>
-                @endforeach 
-            @endforeach
+            <a href="/playlist">
+            <button>Playlists</button>
+            </a>
 
             <div class="watermark">
                 <img src="{{asset('icons/3.png')}}" alt="watermark">
