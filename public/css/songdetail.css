@@ -12,24 +12,13 @@ body {
     right:5px;
     opacity:0.5;
    }
-.PlaylistName {
+.SongName {
     color: rgb(250, 250, 250);
     font-size: 30px;
     font-family: Roboto;
 }
-.Divider {
-    color: rgb(250, 250, 250);
-    font-size: 20px;
-    font-family: Roboto;
-}
 .SongText {
     color: rgb(250, 250, 250);
-    height: 30px;
-    text-align: center;
-    background: #f8d640;
     font-size: 20px;
-    border-color: #ea812c;
-    border-radius:2px;
-    padding: 0px;
     font-family: Roboto;
 }

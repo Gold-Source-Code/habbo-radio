@@ -9,7 +9,11 @@
 
         <div class="PlaylistName">{{$playlist->name}}</div>
         @foreach($playlist -> songs as $song)
-            <div class="SongText">- {{$song->name}}</div>
+                
+                <a href="{{route('song_detail', ['song' => $song->id])}}">
+                <input type="button" class="SongText" id="click" value="{{$song->name}}">
+                <br>
+                </a>
         @endforeach 
 
         <a href="/melon">

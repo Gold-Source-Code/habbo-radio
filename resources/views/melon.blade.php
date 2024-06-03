@@ -8,18 +8,10 @@
         <img class="logo" src="{{asset('icons/habbo.png')}}" alt="logo">
 
             @foreach($songs as $song)
-                <div class="SongText">{{$song->name}}</div>
-
-                <?php
-                $total_runtime = $song->duration;
-                
-                $min = intval($total_runtime / 60);
-                $sec = sprintf("%02d", $total_runtime % 60);
-
-                $dur = "$min:$sec";
-                ?>
-
-                <div class="ArtistText">{{$song->artist}} - {{$dur}} - {{$song->genre->type}}</div>
+                <a href="{{route('song_detail', ['song' => $song->id])}}">
+                <input type="button" class="SongText" id="click" value="{{$song->name}}">
+                <br>
+                </a>
             @endforeach
 
             <a href="/playlist">

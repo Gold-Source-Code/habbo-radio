@@ -8,14 +8,19 @@
         <img class="logo" src="{{asset('icons/habbo.png')}}" alt="logo">
 
         @foreach($playlists as $playlist)
-        <div class="PlaylistText">{{$playlist->name}}</div>
-        <!-- <a href="/playlistdetail/?id={{$playlist->id}}"><button>Check {{$playlist->name}}</button></a> -->
-        <a href="{{route('playlist_detail', ['playlist' => $playlist->id])}}"><button>Check {{$playlist->name}}</button></a>
+        
+        <a href="{{route('playlist_detail', ['playlist' => $playlist->id])}}">
+        <input type="button" class="PlaylistText" id="click" value="{{$playlist->name}}">
+        </a>
             @foreach($playlist -> songs as $song)
                 <div class="SongText">- {{$song->name}}</div>
             @endforeach 
         @endforeach
-        
+
+        <a href="/melon">
+
+        </a>
+
         <a href="/melon">
         <button>Songs</button>
         </a>
