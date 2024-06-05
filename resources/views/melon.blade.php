@@ -14,10 +14,16 @@
                 </a>
             @endforeach
 
-            <a href="/playlist">
-            <button>Playlists</button>
-            </a>
+            <div class="center">
+                <a href="/playlist">
+                <button>Playlists</button>
+                </a>
 
+                <a href="/geck">
+                <button>G.E.C.K.</button>
+                </a>
+            </div>
+            
             <div class="watermark">
                 <img src="{{asset('icons/3.png')}}" alt="watermark">
             </div>
