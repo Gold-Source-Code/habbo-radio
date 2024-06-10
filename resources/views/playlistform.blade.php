@@ -11,13 +11,26 @@
         <br>
 
         <div class="center">
-            <form>
-                <label class="question" for="User">User:</label><br>
-                <input type="text" id="user" name="user" value="Enter Text..."><br>
-                <label class="question" for="Name">Name:</label><br>
-                <input type="text" id="name" name="name" value="Enter Text..."><br>
-                <label class="question" for="Description">Description:</label><br>
-                <input type="text" id="description" name="description" value="Enter Text..."><br>
+            <form action="/playlistform/store" method="POST">
+                @csrf
+                <label class="question" for="user">User:</label><br>
+                <input type="text" id="user" name="user" value=""><br>
+                @error("user")
+                <div class="errormessage">{{$message}} Fix it.</div>
+                @enderror
+
+                <label class="question" for="user">Name:</label><br>
+                <input type="text" id="name" name="name" value=""><br>
+                @error("name")
+                <div class="errormessage">{{$message}} Fix it.</div>
+                @enderror
+
+                <label class="question" for="description">Description:</label><br>
+                <input type="text" id="description" name="description" value=""><br>
+                @error("description")
+                <div class="errormessage">{{$message}} Fix it.</div>
+                @enderror
+
                 <input class="answer" type="submit" value="Send">
             </form>
         </div>

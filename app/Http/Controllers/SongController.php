@@ -24,7 +24,7 @@ class SongController extends Controller
      */
     public function create()
     {
-        // 
+        return view('songform');
     }
 
     /**
@@ -32,7 +32,19 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => "required|string",
+            "artist" => "required|string",
+            "duration" => "required|integer|min:0",
+            "genre_id" => "required|integer|min:1"
+        ]);
+
+        Song::create([
+            "name" => $request->name,
+            "artist" => $request->artist,
+            "duration" => $request->duration,
+            "genre_id" => $request->genre_id
+        ]);
     }
 
     /**

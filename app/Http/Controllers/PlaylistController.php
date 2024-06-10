@@ -22,7 +22,7 @@ class PlaylistController extends Controller
      */
     public function create()
     {
-        //
+        return view('playlistform');
     }
 
     /**
@@ -30,7 +30,17 @@ class PlaylistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "user" => "required|string",
+            "name" => "required|string",
+            "description" => "required|string",
+        ]);
+
+        Playlist::create([
+            "user" => $request->user,
+            "name" => $request->name,
+            "description" => $request->description
+        ]);
     }
 
     /**

@@ -12,7 +12,7 @@ class GenreController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -20,7 +20,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-        //
+        return view('genreform');
     }
 
     /**
@@ -28,7 +28,13 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "type" => "unique:genres,type|required|min:3"
+        ]);
+    
+        Genre::create([
+            "type" => $request->type
+        ]);
     }
 
     /**

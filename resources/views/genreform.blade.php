@@ -11,11 +11,16 @@
         <br>
 
         <div class="center">
-            <form>
-                <label class="question" for="name">Genre:</label><br>
-                <input type="text" id="name" name="name" value="Enter Text..."><br>
+            <form action="/genreform/store" method="POST">
+                @csrf
+                <label class="question" for="type">Genre:</label><br>
+                <input type="text" id="type" name="type" value=""><br>
                 <input class="answer" type="submit" value="Send">
             </form>
+
+            @error('type')
+            <div class="errormessage">{{$message}} Fix it.</div>
+            @enderror
         </div>
 
         <br>
