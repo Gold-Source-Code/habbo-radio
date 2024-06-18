@@ -38,4 +38,9 @@ Route::post('/songform/store', [SongController::class, "store"]);
 Route::get('/playlistform', [PlaylistController::class, "create"]);
 Route::post('/playlistform/store', [PlaylistController::class, "store"]);
 
+Route::get('/addsongs', [PlaylistController::class, "addsong"]);
+Route::post('/addsongs/add', [PlaylistController::class, "add"]);
+
+Route::get('/login', [GeckController::class, "logintest"]);
+
 // Route insert a new song and 

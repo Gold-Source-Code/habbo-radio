@@ -10,5 +10,9 @@ class GeckController extends Controller
     {
         return view('geck');
     }
+    public function logintest()
+    {
+        return view('login');
+    }
 
 }

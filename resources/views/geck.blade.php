@@ -18,6 +18,9 @@
             <a href="/playlistform">
             <input type="button" class="buttons" id="click" value="Submit Playlist">
             </a>
+            <a href="/addsongs">
+            <input type="button" class="buttons" id="click" value="Add Song To Playlist">
+            </a>
         </div>
 
         <br>

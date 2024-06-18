@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use App\Models\Song;
 use App\Models\Playlist;
 use Illuminate\Http\Request;
 
@@ -46,6 +47,24 @@ class PlaylistController extends Controller
     /**
      * Display the specified resource.
      */
+
+    public function add(Request $request){
+        $request->validate([
+            "playlist_id" => "required|integer",
+            "song_id" => "required|integer",
+        ]);
+
+        $added = $request->song_id;
+        $playlist = Playlist::find($request->playlist_id);
+        $playlist->songs()->attach($added);
+    }
+
+    public function addsong(){
+        $allSongs = Song::all();
+        $allPlaylists = Playlist::all();
+        return view('addsongs', ['songs' => $allSongs, 'playlist' => $allPlaylists]);
+    }
+
     public function show(Playlist $playlist)
     {
         //
