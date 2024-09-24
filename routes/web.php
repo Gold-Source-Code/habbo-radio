@@ -20,8 +20,11 @@ use App\Http\Controllers\GenreController;
 */
 
 Route::get('/melon', [SongController::class, "index"]);
+Route::get('/melon/{song}', [SongController::class, "storetemp"])->name("melon");
 
-Route::get('/playlist', [PlaylistController::class, "index"]);
+Route::get('/playlist', [PlaylistController::class, "index"])->middleware('auth');
+
+Route::get('/genre', [GenreController::class, "index"]);
 
 Route::get('/playlistdetail/{playlist}', [PlaylistDetailController::class, "index"])->name("playlist_detail");
 
@@ -38,9 +41,18 @@ Route::post('/songform/store', [SongController::class, "store"]);
 Route::get('/playlistform', [PlaylistController::class, "create"]);
 Route::post('/playlistform/store', [PlaylistController::class, "store"]);
 
-Route::get('/addsongs', [PlaylistController::class, "addsong"]);
+Route::get('/addsongs', [PlaylistController::class, "addsong"])->middleware('auth');
 Route::post('/addsongs/add', [PlaylistController::class, "add"]);
+Route::get('/addsongs/transmit/{playlist}', [PlaylistController::class, "transmit"])->name("transmit");
 
-Route::get('/login', [GeckController::class, "logintest"]);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route insert a new song and 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

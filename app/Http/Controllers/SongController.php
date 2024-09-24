@@ -26,8 +26,18 @@ class SongController extends Controller
     {
         return view('songform');
     }
-
-    /**
+    
+    public function storetemp(Request $request, Song $song)
+    {   
+        
+        //session = list | first part = key | second part = values
+        if (!$request->session()->has('transmission')){
+            $request->session()->put('transmission', []);
+        }
+        $request->session()->push('transmission', $song->id);
+        return redirect('melon');
+    }
+    /** 
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -45,6 +55,7 @@ class SongController extends Controller
             "duration" => $request->duration,
             "genre_id" => $request->genre_id
         ]);
+        return view('songform');
     }
 
     /**

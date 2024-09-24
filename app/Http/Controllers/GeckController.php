@@ -12,7 +12,7 @@ class GeckController extends Controller
     }
     public function logintest()
     {
-        return view('login');
+        return view('dorito');
     }
 
 }

@@ -24,6 +24,10 @@
             <a href="/melon">
             <button>Songs</button>
             </a>
+            
+            <a href="/genre">
+            <button>Genres</button>
+            </a>
 
             <a href="/playlist">
             <button>Playlists</button>

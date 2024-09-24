@@ -6,6 +6,7 @@ use DB;
 use App\Models\Song;
 use App\Models\Playlist;
 use Illuminate\Http\Request;
+use Auth;
 
 class PlaylistController extends Controller
 {
@@ -14,7 +15,7 @@ class PlaylistController extends Controller
      */
     public function index()
     {
-        $allPlaylists = Playlist::all();
+        $allPlaylists = Auth::user()->playlists;
         return view('playlists', ['playlists' => $allPlaylists]);
     }
 
@@ -32,16 +33,16 @@ class PlaylistController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "user" => "required|string",
             "name" => "required|string",
             "description" => "required|string",
         ]);
 
         Playlist::create([
-            "user" => $request->user,
+            "user_id" => Auth::user()->id,
             "name" => $request->name,
             "description" => $request->description
         ]);
+        return view('playlistform');
     }
 
     /**
@@ -53,21 +54,29 @@ class PlaylistController extends Controller
             "playlist_id" => "required|integer",
             "song_id" => "required|integer",
         ]);
+        $allSongs = Song::all();
+        $allPlaylists = Auth::user()->playlists;
 
         $added = $request->song_id;
         $playlist = Playlist::find($request->playlist_id);
         $playlist->songs()->attach($added);
+        return view('addsongs', ['songs' => $allSongs, 'playlists' => $allPlaylists]);
     }
 
     public function addsong(){
         $allSongs = Song::all();
-        $allPlaylists = Playlist::all();
-        return view('addsongs', ['songs' => $allSongs, 'playlist' => $allPlaylists]);
+        $allPlaylists = Auth::user()->playlists;
+        return view('addsongs', ['songs' => $allSongs, 'playlists' => $allPlaylists]);
     }
 
-    public function show(Playlist $playlist)
+    public function transmit(Request $request, Playlist $playlist)
     {
-        //
+        $transmission = $request->session()->only(['transmission']);
+
+        foreach ($transmission as $songvalue){
+            $playlist->songs()->attach($songvalue);
+        }
+        return view('geck');
     }
 
     /**

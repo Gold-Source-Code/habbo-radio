@@ -13,12 +13,6 @@
         <div class="center">
             <form action="/playlistform/store" method="POST">
                 @csrf
-                <label class="question" for="user">User:</label><br>
-                <input type="text" id="user" name="user" value=""><br>
-                @error("user")
-                <div class="errormessage">{{$message}} Fix it.</div>
-                @enderror
-
                 <label class="question" for="user">Name:</label><br>
                 <input type="text" id="name" name="name" value=""><br>
                 @error("name")
@@ -41,6 +35,10 @@
             <a href="/melon">
             <button>Songs</button>
             </a>
+            
+            <a href="/genre">
+            <button>Genres</button>
+            </a>
 
             <a href="/playlist">
             <button>Playlists</button>
@@ -48,7 +46,7 @@
 
             <a href="/geck">
             <button>G.E.C.K.</button>
-            </a>
+            </a>   
         </div>
 
         <div class="watermark">

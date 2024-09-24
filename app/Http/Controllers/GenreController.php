@@ -12,7 +12,8 @@ class GenreController extends Controller
      */
     public function index()
     {
-        
+        $allGenres = Genre::all();
+        return view('genre', ['genres' => $allGenres]);
     }
 
     /**
@@ -35,6 +36,7 @@ class GenreController extends Controller
         Genre::create([
             "type" => $request->type
         ]);
+        return redirect('genreform');
     }
 
     /**

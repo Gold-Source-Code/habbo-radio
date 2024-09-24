@@ -14,7 +14,7 @@
             <form action="/addsongs/add" method="POST">
                 @csrf
                 <select name="playlist_id" multiple>
-                    @foreach($playlist as $playlist)
+                    @foreach($playlists as $playlist)
                         <option class="options" value="{{$playlist->id}}" for="playlist_id">{{$playlist->name}}</option>
                     @endforeach
                 </select><br>
@@ -42,12 +42,20 @@
             <button>Songs</button>
             </a>
 
+            <a href="/genre">
+            <button>Genres</button>
+            </a>
+
             <a href="/playlist">
             <button>Playlists</button>
             </a>
 
             <a href="/geck">
             <button>G.E.C.K.</button>
+            </a>
+
+            <a href="{{route('transmit', ['playlist' => $playlist->id])}}">  
+            <button>Transmit</button>
             </a>
         </div>
 

@@ -11,7 +11,7 @@ class SongSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
         Song::factory()->count(10)->create();
 

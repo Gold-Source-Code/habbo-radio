@@ -17,7 +17,7 @@ class PlaylistFactory extends Factory
     public function definition(): array
     {
         return [
-            "user" => fake()->name,
+            "user_id" => 1,
             "name" => fake()->word,
             "description" => fake()->sentence(6)
         ];

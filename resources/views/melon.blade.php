@@ -6,15 +6,21 @@
     </head>
     <body>
         <img class="logo" src="{{asset('icons/habbo.png')}}" alt="logo">
-
             @foreach($songs as $song)
                 <a href="{{route('song_detail', ['song' => $song->id])}}">
                 <input type="button" class="SongText" id="click" value="{{$song->name}}">
-                <br>
                 </a>
+                <a href="{{route('melon', ['song' => $song->id])}}">
+                <input type="button" class="SongText" id="click" value=" + ">
+                </a>
+                <br>
             @endforeach
 
             <div class="center">
+                <a href="/genre">
+                <button>Genres</button>
+                </a>
+
                 <a href="/playlist">
                 <button>Playlists</button>
                 </a>
