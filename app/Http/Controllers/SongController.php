@@ -30,12 +30,20 @@ class SongController extends Controller
     public function storetemp(Request $request, Song $song)
     {   
         
-        //session = list | first part = key | second part = values
         if (!$request->session()->has('transmission')){
             $request->session()->put('transmission', []);
         }
         $request->session()->push('transmission', $song->id);
         return redirect('melon');
+    }
+    public function removetemp(Request $request, Song $song)
+    {   
+        if (!$request->session()->has('transmission')){
+            $request->session()->put('transmission', []);
+        }
+        $selected = array_search($song->id, $request->session()->get('transmission'));
+        $request->session()->forget("transmission.$selected");
+        return redirect('tempplaylistdetail');
     }
     /** 
      * Store a newly created resource in storage.

@@ -60,7 +60,7 @@ class PlaylistController extends Controller
         $added = $request->song_id;
         $playlist = Playlist::find($request->playlist_id);
         $playlist->songs()->attach($added);
-        return view('addsongs', ['songs' => $allSongs, 'playlists' => $allPlaylists]);
+        return redirect()->back();
     }
 
     public function addsong(){
@@ -79,6 +79,40 @@ class PlaylistController extends Controller
         return view('geck');
     }
 
+    public function showtempplaylist(Request $request)
+    {
+        if (!$request->session()->has('transmission')){
+            $request->session()->put('transmission', []);
+        }
+        $transmission = $request->session()->only(['transmission']);
+        $TempSongs = Song::find($transmission['transmission']);
+        
+        return view('tempplaylistdetail', ['songs' => $TempSongs]);
+    }
+
+    public function removesong(Playlist $playlist){
+        return view('removesong', ['playlist' => $playlist]);
+    }
+
+    public function remove(Request $request, Playlist $playlist){
+        $request->validate([
+            "song_id" => "required|integer",
+        ]);
+        $selected = $request->song_id;
+        $playlist->songs()->detach($selected);
+        return redirect()->back();
+    }
+
+    public function selectplaylist(Request $request, Playlist $playlist){
+        $allPlaylists = Auth::user()->playlists;
+        
+        return view('selectplaylist', ['playlists' => $allPlaylists]);
+    }   
+
+    public function sendtors(Request $request){
+        $selected = $request->playlist_id;
+        return redirect()->route('removesong', ['playlist' => $selected]);
+    }
     /**
      * Show the form for editing the specified resource.
      */

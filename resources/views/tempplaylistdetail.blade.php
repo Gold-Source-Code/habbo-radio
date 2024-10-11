@@ -5,7 +5,7 @@
     @section('main')
         <?php
             $playlist_dur = 0;
-            foreach ($playlist -> songs as $song){
+            foreach ($songs as $song){
                 $playlist_dur = $playlist_dur + $song->duration;
                 }
             
@@ -17,11 +17,14 @@
             $dur = "$min:$sec";
             ?>
 
-        <div class="PlaylistName">{{$playlist->name}} - {{$dur}}</div>
-        @foreach($playlist -> songs as $song)
+        <div class="PlaylistName">Temporary Playlist - {{$dur}}</div>
+        @foreach($songs as $song)
                 <a href="{{route('song_detail', ['song' => $song->id])}}">
                     <input type="button" class="SongText" id="click" value="{{$song->name}}">
-                    <br>
                 </a>
+                <a href="{{route('removetemp', ['song' => $song->id])}}">
+                    <input type="button" class="SongText" id="click" value=" - ">
+                </a>
+                <br>
         @endforeach 
     @endsection

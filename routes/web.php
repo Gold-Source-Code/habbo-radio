@@ -20,11 +20,13 @@ use App\Http\Controllers\GenreController;
 */
 
 Route::get('/melon', [SongController::class, "index"]);
-Route::get('/melon/{song}', [SongController::class, "storetemp"])->name("melon");
+Route::get('/storetemp/{song}', [SongController::class, "storetemp"])->name("storetemp");
+Route::get('/removetemp/{song}', [SongController::class, "removetemp"])->name("removetemp");
 
 Route::get('/playlist', [PlaylistController::class, "index"])->middleware('auth');
 
 Route::get('/genre', [GenreController::class, "index"]);
+Route::get('/genre/{genre}', [GenreController::class, "selectgenre"])->name("selectgenre");
 
 Route::get('/playlistdetail/{playlist}', [PlaylistDetailController::class, "index"])->name("playlist_detail");
 
@@ -44,6 +46,13 @@ Route::post('/playlistform/store', [PlaylistController::class, "store"]);
 Route::get('/addsongs', [PlaylistController::class, "addsong"])->middleware('auth');
 Route::post('/addsongs/add', [PlaylistController::class, "add"]);
 Route::get('/addsongs/transmit/{playlist}', [PlaylistController::class, "transmit"])->name("transmit");
+
+Route::get('/selectplaylist', [PlaylistController::class, "selectplaylist"])->middleware('auth');
+Route::post('/sendtors', [PlaylistController::class, "sendtors"]);
+Route::get('/removesong/{playlist}', [PlaylistController::class, "removesong"])->name("removesong")->middleware('auth');
+Route::post('/removesong/{playlist}/remove', [PlaylistController::class, "remove"]);
+
+Route::get('/tempplaylistdetail', [PlaylistController::class, "showtempplaylist"]);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

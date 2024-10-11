@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Genre;
+use App\Models\Song;
+use App\Models\Playlist;
 use Illuminate\Http\Request;
 
 class GenreController extends Controller
@@ -16,9 +18,13 @@ class GenreController extends Controller
         return view('genre', ['genres' => $allGenres]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function selectgenre(Genre $genre)
+    {
+        $allSongs = $genre->songs;
+        $allPlaylists = Playlist::all();
+        return view('melon', ['songs' => $allSongs, 'playlists' => $allPlaylists]);
+    }
+
     public function create()
     {
         return view('genreform');

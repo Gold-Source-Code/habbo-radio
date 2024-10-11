@@ -1,37 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Habbo Radio</title>
+@extends('layouts.habbolayout')
+    @push('style')
         <link rel="stylesheet" type="text/css" href="{{asset('css/melon.css')}}">
-    </head>
-    <body>
-        <img class="logo" src="{{asset('icons/habbo.png')}}" alt="logo">
-            @foreach($songs as $song)
+    @endpush
+    @section('main')
+        @foreach($songs as $song)
                 <a href="{{route('song_detail', ['song' => $song->id])}}">
-                <input type="button" class="SongText" id="click" value="{{$song->name}}">
+                    <input type="button" class="SongText" id="click" value="{{$song->name}}">
                 </a>
-                <a href="{{route('melon', ['song' => $song->id])}}">
-                <input type="button" class="SongText" id="click" value=" + ">
+                <a href="{{route('storetemp', ['song' => $song->id])}}">
+                    <input type="button" class="SongText" id="click" value=" + ">
                 </a>
-                <br>
-            @endforeach
-
-            <div class="center">
-                <a href="/genre">
-                <button>Genres</button>
-                </a>
-
-                <a href="/playlist">
-                <button>Playlists</button>
-                </a>
-
-                <a href="/geck">
-                <button>G.E.C.K.</button>
-                </a>
-            </div>
-            
-            <div class="watermark">
-                <img src="{{asset('icons/3.png')}}" alt="watermark">
-            </div>
-    </body>
-</html>
+            <br>
+        @endforeach
+    @endsection
