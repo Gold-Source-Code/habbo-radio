@@ -33,7 +33,7 @@
         </div>
             
         <div class="watermark">
-            <img src="{{asset('icons/cooler.gif)}}" alt="watermark">
+            <img src="{{asset('icons/cooler.gif')}}" alt="watermark">
         </div>
     <body\>
 <html\>

@@ -19,6 +19,9 @@
             <a href="/selectplaylist">
                 <input type="button" class="buttons" id="click" value="Remove Song From Playlist">
             </a>
+            <a href="/updategenre">
+                <input type="button" class="buttons" id="click" value="Update Genre">
+            </a>
         </div>
 
         <br>

@@ -25,6 +25,21 @@ class GenreController extends Controller
         return view('melon', ['songs' => $allSongs, 'playlists' => $allPlaylists]);
     }
 
+    public function updategenre(){
+        $genre = Genre::all();
+        return view('updategenre', ['genres' => $genre]);
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            "genre_id" => "required|integer",
+            "name" => "required|string"
+        ]);
+        Genre::find($request->genre_id)->update(['type' => $request->name]);
+        return view('geck');
+    }
+
     public function create()
     {
         return view('genreform');
@@ -43,37 +58,5 @@ class GenreController extends Controller
             "type" => $request->type
         ]);
         return redirect('genreform');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Genre $genre)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Genre $genre)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Genre $genre)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Genre $genre)
-    {
-        //
     }
 }

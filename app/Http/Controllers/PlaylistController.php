@@ -66,6 +66,11 @@ class PlaylistController extends Controller
     public function addsong(){
         $allSongs = Song::all();
         $allPlaylists = Auth::user()->playlists;
+        if ($allPlaylists->isEmpty()){
+            
+            return redirect()->route('playlistform');
+        }
+
         return view('addsongs', ['songs' => $allSongs, 'playlists' => $allPlaylists]);
     }
 

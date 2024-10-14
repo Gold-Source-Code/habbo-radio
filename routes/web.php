@@ -40,7 +40,7 @@ Route::post('/genreform/store', [GenreController::class, "store"]);
 Route::get('/songform', [SongController::class, "create"]);
 Route::post('/songform/store', [SongController::class, "store"]);
 
-Route::get('/playlistform', [PlaylistController::class, "create"]);
+Route::get('/playlistform', [PlaylistController::class, "create"])->name("playlistform");
 Route::post('/playlistform/store', [PlaylistController::class, "store"]);
 
 Route::get('/addsongs', [PlaylistController::class, "addsong"])->middleware('auth');
@@ -53,6 +53,9 @@ Route::get('/removesong/{playlist}', [PlaylistController::class, "removesong"])-
 Route::post('/removesong/{playlist}/remove', [PlaylistController::class, "remove"]);
 
 Route::get('/tempplaylistdetail', [PlaylistController::class, "showtempplaylist"]);
+
+Route::get('/updategenre', [GenreController::class, "updategenre"]);
+Route::post('/updategenre/update', [GenreController::class, "update"])->name("updategenre");
 
 Route::get('/dashboard', function () {
     return view('dashboard');
